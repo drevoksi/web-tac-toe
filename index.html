@@ -5,8 +5,19 @@
         <link rel="stylesheets" href="gamestyle.css">
     </head>
     <body>
+        <script>
+            let turn = "X"
+            function changeTurn() {
+                // Can already see lots of functions here
+                turn = (turn == "X" ? "O" : "X");
+                document.getElementById("turn").innerHTML = "Turn: " + turn;
+            }
+        </script>
         <h1>Web-tac-toe</h1>
-        <p>Turn: X</p>
+        <p id="turn">Turn: X</p>
+        <button onclick="changeTurn()">Change turn</button>
         <div class="board"></div>
+        <p id="blocks"></p>
+
     </body>
 </html>
