@@ -6,3 +6,19 @@ h1 {
     bottom: 20px;
     right: 20px;
 }
+#board {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 320px;
+    height: 320px;
+}
+.cell {
+    background-color: rgb(147, 188, 147);
+    border-radius: 10px;
+    height: 100px;
+    width: 100px;
+}
