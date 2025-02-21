@@ -17,7 +17,7 @@
                 turn = (turn == "X" ? "O" : "X");
                 document.getElementById("turn").innerHTML = "Turn: " + turn;
             }
-
+            
             function checkBoard() {
                 // check board
             }
@@ -36,7 +36,7 @@
                     element.dataset.y = y;
                     element.dataset.state = "";
                     board.appendChild(element);
-                    col.push(element)
+                    col.push("")
                 }
                 boardArray.push(col)
             }
