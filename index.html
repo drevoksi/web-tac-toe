@@ -47,6 +47,7 @@
                     if (cell.dataset.state === "") {
                         cell.innerHTML = turn;
                         cell.dataset.state = turn;
+                        boardArray[cell.dataset.x][cell.dataset.y] = turn;
                         changeTurn();
                     }
                 });
