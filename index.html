@@ -21,6 +21,17 @@
             function checkBoard() {
                 // check board
             }
+
+            function printBoard() {
+                let result = "";
+                for (let y = 0; y < 3; y++) {
+                    for (let x = 0; x < 3; x++) {
+                        result += boardArray[x][y];
+                    }
+                    result += "\n";
+                }
+                console.log(result);
+            }
             
             let board = document.getElementById('board');
             let boardArray = []
@@ -36,7 +47,7 @@
                     element.dataset.y = y;
                     element.dataset.state = "";
                     board.appendChild(element);
-                    col.push("")
+                    col.push(" ")
                 }
                 boardArray.push(col)
             }
@@ -49,6 +60,7 @@
                         cell.dataset.state = turn;
                         boardArray[cell.dataset.x][cell.dataset.y] = turn;
                         changeTurn();
+                        printBoard();
                     }
                 });
             }
