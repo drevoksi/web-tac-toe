@@ -12,14 +12,57 @@
         <p id="copyright">&copy drevoksi 2025</p>
         <script>
             let turn = "X"
+            let gameState = "";
+
+            function isClear(state) {
+                return state !== "X" && state !== "O";
+            }
+            
             function changeTurn() {
                 // Can already see lots of functions here
                 turn = (turn == "X" ? "O" : "X");
                 document.getElementById("turn").innerHTML = "Turn: " + turn;
             }
-            
+
             function checkBoard() {
-                // check board
+                let check = checkCells();
+                
+                if (check) {
+                    gameState = check;
+                    console.log(gameState + " wins");
+                    document.getElementById("turn").innerHTML = gameState + " Wins!";
+                }
+            }
+            
+            function checkCells() {
+                for (let row = 0; row < 3; row++) {
+                    if (check = compareCells(boardArray[0][row], boardArray[1][row], boardArray[2][row])) {
+                        return check;
+                    }
+                }
+
+                for (let col = 0; col < 3; col++) {
+                    if (check = compareCells(boardArray[col][0], boardArray[col][1], boardArray[col][2])) {
+                        return check;
+                    }
+                }
+
+                if (check = compareCells(boardArray[0][0], boardArray[1][1], boardArray[2][2])) {
+                    return check;
+                }
+
+                if (check = compareCells(boardArray[2][0], boardArray[1][1], boardArray[0][2])) {
+                    return check;
+                }
+
+                return false;
+            }
+
+            function compareCells(a, b, c) {
+                if (!isClear(a) && a === b && b === c) {
+                    return a;
+                }
+                return false;
             }
 
             function printBoard() {
@@ -45,7 +88,6 @@
                     element.classList.add('cell');
                     element.dataset.x = x;
                     element.dataset.y = y;
-                    element.dataset.state = "";
                     board.appendChild(element);
                     col.push(".")
                 }
@@ -55,12 +97,13 @@
             // add click to elements
             for (const cell of document.getElementsByClassName('cell')) {
                 cell.addEventListener('click', function () {
-                    if (cell.dataset.state === "") {
+                    let state = boardArray[cell.dataset.x][cell.dataset.y];
+                    if (isClear(state) && isClear(gameState)) {
                         cell.innerHTML = turn;
-                        cell.dataset.state = turn;
                         boardArray[cell.dataset.x][cell.dataset.y] = turn;
                         changeTurn();
                         printBoard();
+                        checkBoard();
                     }
                 });
             }
