@@ -29,8 +29,7 @@
                 
                 if (check) {
                     gameState = check;
-                    console.log(gameState + " wins");
-                    document.getElementById("turn").innerHTML = gameState + " Wins!";
+                    document.getElementById("turn").innerHTML = isClear(gameState) ? "Draw!" : gameState + " Wins!";
                 }
             }
             
@@ -54,8 +53,17 @@
                 if (check = compareCells(boardArray[2][0], boardArray[1][1], boardArray[0][2])) {
                     return check;
                 }
+                
+                let hasEmpty = false;
+                for (let x = 0; x < 3; x++) {
+                    for (let y = 0; y < 3; y++) {
+                        if (isClear(boardArray[x][y])) {
+                            return false
+                        }
+                    }
+                }
 
-                return false;
+                return " ";
             }
 
             function compareCells(a, b, c) {
