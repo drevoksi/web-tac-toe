@@ -1,5 +1,11 @@
+* {
+    font-family: inherit;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 h1 {
-    background-color: grey;
+    text-align: center;
 }
 #copyright {
     position: fixed;
@@ -24,5 +30,5 @@ h1 {
     text-align: center;
     align-content: center;
     font-size: 64px;
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
 }
