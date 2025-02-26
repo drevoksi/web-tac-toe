@@ -75,7 +75,6 @@ let board = document.getElementById('board');
 let boardArray = []
 
 // create board
-
 for (let x = 0; x < 3; x++) {
     let col = []
     for (let y = 0; y < 3; y++) {
