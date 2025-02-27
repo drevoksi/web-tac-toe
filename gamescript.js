@@ -41,7 +41,6 @@ function checkCells() {
         return check;
     }
     
-    let hasEmpty = false;
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
             if (isClear(boardArray[x][y])) {
