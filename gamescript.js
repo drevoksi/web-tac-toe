@@ -22,7 +22,6 @@ function checkBoard() {
 
 // TODO: need to return coordinates of the cells, for the ability to create a line through
 // TODO: game needs to be restartable
-// TODO: ideally shouldn't duplicate data, store either in array or elements, not both
 function checkCells() {
     for (let row = 0; row < 3; row++) {
         if (check = compareCells(boardArray[0][row], boardArray[1][row], boardArray[2][row])) {
