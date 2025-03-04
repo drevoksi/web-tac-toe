@@ -46,7 +46,7 @@ function checkCells() {
     
     for (let x = 0; x < 3; x++) {
         for (let y = 0; y < 3; y++) {
-            if (isClear(boardArray[x][y])) {
+            if (isClear(boardArray[x][y].dataset.state)) {
                 return false
             }
         }
@@ -56,17 +56,29 @@ function checkCells() {
 }
 
 function compareCells(a, b, c) {
-    if (!isClear(a) && a === b && b === c) {
-        return a;
+    if (!isClear(a.dataset.state) && a.dataset.state === b.dataset.state && b.dataset.state === c.dataset.state) {
+        return a.dataset.state;
     }
     return false;
+}
+
+function updateCells() {
+    for (const cell of document.getElementsByClassName("cell")) {
+        cell.innerHTML = cell.dataset.state;
+    }
+}
+
+function resetCells() {
+    for (const cell of document.getElementsByClassName("cell")) {
+        cell.dataset.state = " ";
+    }
 }
 
 function printBoard() {
     let result = "";
     for (let y = 0; y < 3; y++) {
         for (let x = 0; x < 3; x++) {
-            result += boardArray[x][y];
+            result += boardArray[x][y].dataset.state;
         }
         result += "\n";
     }
@@ -82,22 +94,24 @@ for (let x = 0; x < 3; x++) {
     for (let y = 0; y < 3; y++) {
         let element = document.createElement("div");
         element.classList.add('cell');
+        element.dataset.state = " ";
         element.dataset.x = x;
         element.dataset.y = y;
         board.appendChild(element);
-        col.push(".")
+        col.push(element);
     }
     boardArray.push(col)
 }
 
+
+
 // add click to elements
 for (const cell of document.getElementsByClassName('cell')) {
     cell.addEventListener('click', function () {
-        let state = boardArray[cell.dataset.x][cell.dataset.y];
-        if (isClear(state) && isClear(gameState)) {
-            cell.innerHTML = turn;
-            boardArray[cell.dataset.x][cell.dataset.y] = turn;
+        if (isClear(cell.dataset.state) && isClear(gameState)) {
+            cell.dataset.state = turn;
             changeTurn();
+            updateCells();
             printBoard();
             checkBoard();
         }
