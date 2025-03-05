@@ -5,6 +5,7 @@ function isClear(state) {
     return state !== "X" && state !== "O";
 }
 
+// TODO: add set turn and set game state methods
 function changeTurn() {
     // Can already see lots of functions here
     turn = (turn == "X" ? "O" : "X");
@@ -67,10 +68,11 @@ function updateCells() {
     }
 }
 
-function resetCells() {
+function resetBoard() {
     for (const cell of document.getElementsByClassName("cell")) {
         cell.dataset.state = " ";
     }
+    updateCells();
 }
 
 function printBoard() {
